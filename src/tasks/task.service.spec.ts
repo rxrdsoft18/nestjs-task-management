@@ -49,13 +49,13 @@ describe('TaskService', () => {
       expect(result).toEqual(mockTask);
     });
 
-    // it('throws an error if task is not found', async () => {
-    //   taskService.findTaskById.mockResolvedValue(null);
-    //   // console.log(
-    //   //   await taskService.getTaskById('id', mockUser),
-    //   //   'taskService.getTaskById',
-    //   // );
-    //   expect(taskService.getTaskById('someId', mockUser)).rejects.toThrow();
-    // });
+    it('throws an error if task is not found', async () => {
+      taskService.findTaskById.mockResolvedValue(null);
+      // console.log(
+      //   await taskService.getTaskById('id', mockUser),
+      //   'taskService.getTaskById',
+      // );
+      await expect(taskService.getTaskById('someId', mockUser)).toBeUndefined();
+    });
   });
 });
